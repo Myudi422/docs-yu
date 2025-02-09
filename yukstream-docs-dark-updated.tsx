@@ -172,6 +172,16 @@ export default function YukStreamDocs() {
                 <ol className="space-y-6">
                   {[
                     {
+                      title: "Update Server & Pastikan Fresh",
+                      description: "Pastikan server Anda ter-update.",
+                      code: "sudo apt update && sudo apt upgrade -y",
+                    },
+                    {
+                      title: "Install Tmux",
+                      description: "Install Tmux untuk menjalankan script di background.",
+                      code: "sudo apt install tmux -y",
+                    },
+                    {
                       title: "Clone Repository",
                       description: "Unduh script dari repositori resmi YukStream ke folder yukstream.",
                       code: "git clone https://github.com/yukstream/yukstream.git yukstream",
@@ -180,16 +190,6 @@ export default function YukStreamDocs() {
                       title: "Masuk ke Direktori",
                       description: "Masuk ke direktori yukstream yang baru dibuat.",
                       code: "cd yukstream",
-                    },
-                    {
-                      title: "Update Server",
-                      description: "Pastikan server Anda ter-update.",
-                      code: "sudo apt update && sudo apt upgrade -y",
-                    },
-                    {
-                      title: "Install Tmux",
-                      description: "Install Tmux untuk menjalankan script di background.",
-                      code: "sudo apt install tmux -y",
                     },
                     {
                       title: "Buka Sesi Tmux",
@@ -203,7 +203,7 @@ export default function YukStreamDocs() {
                     },
                     {
                       title: "Code berhasil terinstall & sudah siap dipakai!",
-                      description: "DONE!",
+                      description: "DONE! - Kunjungi http://IPSERVER:3000/",
                       code: "Silahkan kunjungi URL IP kalian menggunakan port 3000",
                     },
                     {
