@@ -1,6 +1,7 @@
 "use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, } from "@/components/ui/card"
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { motion } from "framer-motion"
 import {
@@ -21,9 +22,35 @@ import {
   Calendar,
 } from "lucide-react"
 
+import { useState } from "react";
+
+
+
 const MotionCard = motion(Card)
+const images = [
+  "https://i.pinimg.com/736x/35/4a/75/354a757346e61be6631b851dd10ce411.jpg",
+  "https://i.pinimg.com/736x/35/4a/75/354a757346e61be6631b851dd10ce411.jpg",
+  "https://i.pinimg.com/736x/35/4a/75/354a757346e61be6631b851dd10ce411.jpg",
+];
+
+const videos = [
+  {
+    title: "Tutorial YukStream: Cara Instalasi",
+    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+    url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  },
+  {
+    title: "Cara Menggunakan YukStream untuk Livestreaming",
+    thumbnail: "https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg",
+    url: "https://www.youtube.com/embed/3JZ_D3ELwOQ",
+  },
+];
+
 
 export default function YukStreamDocs() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-100 p-8">
       <div className="max-w-4xl mx-auto">
@@ -149,6 +176,46 @@ export default function YukStreamDocs() {
       </div>
     </CardContent>
   </MotionCard>
+  <MotionCard
+      className="mt-8 overflow-hidden bg-gray-800/50 backdrop-blur-md border-gray-700"
+      whileHover={{ scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
+      <CardHeader>
+        <CardTitle className="text-2xl flex items-center gap-2 text-blue-400">
+          <Monitor className="w-6 h-6" />
+          Tampilan UI Dashboard
+        </CardTitle>
+        <CardDescription className="text-gray-400">
+          Kumpulan screenshot tampilan terbaru dari UI dashboard.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {images.map((img, index) => (
+            <Dialog key={index}>
+              <DialogTrigger asChild>
+                <img
+                  src={img}
+                  alt={`UI ${index + 1}`}
+                  className="rounded-lg border border-gray-700 cursor-pointer hover:opacity-75 transition"
+                  onClick={() => setSelectedImage(img)}
+                />
+              </DialogTrigger>
+              <DialogContent className="p-0 bg-transparent border-none flex items-center justify-center">
+                {selectedImage && (
+                  <img
+                    src={selectedImage}
+                    alt="Zoomed UI"
+                    className="w-full h-auto max-w-[90vw] max-h-[90vh] md:max-w-3xl lg:max-w-4xl xl:max-w-5xl rounded-lg"
+                  />
+                )}
+              </DialogContent>
+            </Dialog>
+          ))}
+        </div>
+      </CardContent>
+    </MotionCard>
 </TabsContent>
 
 
@@ -325,7 +392,52 @@ export default function YukStreamDocs() {
             </MotionCard>
           </TabsContent>
         </Tabs>
-
+        <MotionCard
+      className="mt-8 overflow-hidden bg-gray-800/50 backdrop-blur-md border-gray-700"
+      whileHover={{ scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
+      <CardHeader>
+        <CardTitle className="text-2xl flex items-center gap-2 text-red-500">
+          <PlayCircle className="w-6 h-6" />
+          Tutorial Video YukStream
+        </CardTitle>
+        <CardDescription className="text-gray-400">
+          Pelajari cara menggunakan YukStream dengan mudah melalui video tutorial ini.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {videos.map((video, index) => (
+            <Dialog key={index}>
+              <DialogTrigger asChild>
+                <div
+                  className="relative cursor-pointer rounded-lg overflow-hidden border border-gray-700 hover:opacity-80 transition"
+                  onClick={() => setSelectedVideo(video.url)}
+                >
+                  <img src={video.thumbnail} alt={video.title} className="w-full" />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                    <PlayCircle className="w-16 h-16 text-white" />
+                  </div>
+                  <p className="text-center text-gray-300 p-2">{video.title}</p>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="max-w-3xl p-0 bg-transparent border-none flex items-center justify-center">
+                {selectedVideo && (
+                  <iframe
+                    src={selectedVideo}
+                    title="YouTube Video"
+                    className="w-full h-[50vh] md:h-[70vh] rounded-lg"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                )}
+              </DialogContent>
+            </Dialog>
+          ))}
+        </div>
+      </CardContent>
+    </MotionCard>
         <MotionCard
   className="mt-8 overflow-hidden bg-gray-800/50 backdrop-blur-md border-gray-700"
   whileHover={{ scale: 1.02 }}
@@ -451,6 +563,7 @@ export default function YukStreamDocs() {
     </div>
   </CardContent>
 </MotionCard>
+
 
 
 
