@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'YukStream - Streaming Nonstop, Tanpa Batas',
-  description: 'Created with v0',
+  description: 'Dibuat dengan 💕 oleh YukStream',
 }
 
 export default function RootLayout({
