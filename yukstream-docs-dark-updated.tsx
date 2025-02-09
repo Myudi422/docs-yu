@@ -204,10 +204,10 @@ export default function YukStreamDocs() {
                     {
                       title: "Code berhasil terinstall & sudah siap dipakai!",
                       description: "DONE! - Kunjungi http://IPSERVER:3000/",
-                      code: "Silahkan kunjungi URL IP kalian menggunakan port 3000",
+                      code: "Silahkan kunjungi URL IP kalian menggunakan port 3000 dan tutup server",
                     },
                     {
-                      title: "Keluar dari Sesi",
+                      title: "Atau Keluar dari Sesi",
                       description: "Setelah selesai, keluar dari sesi Tmux dengan menekan Ctrl + B, lalu D.",
                       code: "Ctrl + B, lalu D",
                     },
